@@ -8,7 +8,7 @@ def encode(password):
     #Creates an empty string to store the encoded password
     encoded = ""
     for i in password:
-        #Adds 3 to each of the elements
+        #Determines the special cases by using a dictionary and adding it
         if i == '7' or i == '8' or i == '9':
             special = {
                 '7': '0', '8': '1', '9': '2'
@@ -16,6 +16,7 @@ def encode(password):
             encoded += special[i]
 
         else:
+            # Converts i to integer and adds 3 to it
             encoded += str(int(i) + 3)
     return encoded
 def decode(password):
@@ -29,9 +30,10 @@ def main():
         print("1. Encode")
         print("2. Decode")
         print("3. Quit")
-
+        #Checks the users options and runs it through if statements
         user_option = int(input("Please enter an option: "))
         if user_option == 1:
+            #Asks the user for input and sends it to the encoder function
             password = input("Please enter your password to encode: ")
             encoded_password = encode(password)
 
